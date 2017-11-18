@@ -1,0 +1,11 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Android Things Weather</string>
+    <string name="open_weather_base_url">http://api.openweathermap.org/data/2.5/</string>
+
+    <string name="weather_temperature_unit_imperial">F</string>
+    <string name="weather_temperature_unit_metric">C</string>
+    <string name="weather_temperature_unit_default">K</string>
+    <string name="weather_precipitation">Precipitation: <xliff:g example="15" id="precipitation">%1$s</xliff:g>%%</string>
+    <string name="weather_humidity">Humidity: <xliff:g example="83" id="humidity">%1$s</xliff:g>%%</string>
+    <string name="weather_wind">Wind: <xliff:g example="5" id="wind">%1$s</xliff:g> <xliff:g example="mph" id="speed_unit">%2$s</xliff:g></string>
+</resources>

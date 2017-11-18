@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.toxicbakery.androidthings.example"
+        minSdkVersion 26
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // Open Weather API KEY, place in local.properties as `openWeatherApiKey=...`
+        resValue "string", "open_weather_api_key", getLocalProperty("openWeatherApiKey")
+
+        // Olson formatted timezone https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+        resValue "string", "time_zone", getLocalProperty("timeZone")
+
+        // ZipCode and Country Code in the format of 12345,us
+        resValue "string", "zip_code_and_country_code", getLocalProperty("zipCodeAndCountryCode")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    androidTestImplementation "com.android.support.test:runner:1.0.1"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
+
+    testImplementation 'junit:junit:4.12'
+
+    def mockito_version = "2.12.0"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    def mockitoKotlin_version = "1.5.0"
+    androidTestImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlin_version"
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlin_version"
+
+    def androidSupportVersion = "27.0.1"
+    implementation "com.android.support:appcompat-v7:$androidSupportVersion"
+    implementation "com.android.support:design:$androidSupportVersion"
+
+    def retrofitVersion = "2.3.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    def kodeinVersion = "4.1.0"
+    implementation "com.github.salomonbrys.kodein:kodein:$kodeinVersion"
+    implementation "com.github.salomonbrys.kodein:kodein-android:$kodeinVersion"
+
+    // The version of play services must match the play services of the bundled android things package
+    // See: https://developer.android.com/things/preview/releases.html for version details
+    implementation("com.google.android.gms:play-services-location:11.0.4") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support.constraint:constraint-layout:1.0.2"
+
+    implementation "io.reactivex.rxjava2:rxjava:2.1.6"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "com.google.code.gson:gson:2.8.2"
+    implementation "com.jakewharton.timber:timber:4.5.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.8.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation "com.firebase:firebase-jobdispatcher:0.8.4"
+
+    compileOnly "com.google.android.things:androidthings:0.5.1-devpreview"
+}
