@@ -18,6 +18,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // ical format calendar URL. Google Calendar can be used for example
+        // https://support.google.com/calendar/answer/37648?hl=en
+        resValue "string", "calendar_ical_url", getLocalProperty("calendarIcalUrl")
+
         // Open Weather API KEY, place in local.properties as `openWeatherApiKey=...`
         resValue "string", "open_weather_api_key", getLocalProperty("openWeatherApiKey")
 
