@@ -18,8 +18,6 @@ open class KodeinFrameLayout @JvmOverloads constructor(
     final override val kodeinComponent = super.kodeinComponent
     final override val kodeinScope = super.kodeinScope
 
-    override fun provideOverridingModule(): Kodein.Module = Kodein.Module {}
-
     final override fun initializeInjector() = super.initializeInjector()
 
     @SuppressLint("MissingSuperCall")

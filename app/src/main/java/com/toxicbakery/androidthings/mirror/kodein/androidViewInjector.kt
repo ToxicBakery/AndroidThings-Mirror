@@ -15,6 +15,10 @@ import java.util.*
 interface AndroidViewInjector : AndroidInjector<View, AndroidScope<View>> {
     override val kodeinScope: AndroidScope<View> get() = androidViewScope
 
+    fun provideOverridingKodein(): Kodein = Kodein {}
+
+    override fun provideOverridingModule(): Kodein.Module = Kodein.Module {}
+
     override fun initializeInjector() {
         val viewModule = Kodein.Module {
             Bind<KodeinInjected>(erased()) with InstanceBinding(erased(), this@AndroidViewInjector)
@@ -26,6 +30,7 @@ interface AndroidViewInjector : AndroidInjector<View, AndroidScope<View>> {
 
         inject(Kodein {
             extend(kodeinComponent.appKodein(), allowOverride = true)
+            extend(provideOverridingKodein(), allowOverride = true)
             import(viewModule, allowOverride = true)
         })
     }

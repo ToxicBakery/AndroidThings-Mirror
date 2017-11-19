@@ -6,7 +6,7 @@ import com.toxicbakery.androidthings.mirror.module.weather.currentweather.manage
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.manager.weatherManagerModule
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.ui.presenter.currentWeatherPresenterModule
 
-val moduleCurrentWeatherKodein = Kodein {
+val currentWeatherKodein = Kodein {
     import(currentWeatherJobManagerModule)
     import(currentWeatherPresenterModule)
     import(updateCurrentWeatherManagerModule)
