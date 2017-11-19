@@ -7,7 +7,7 @@ import com.github.salomonbrys.kodein.android.androidActivityScope
 import com.github.salomonbrys.kodein.lazy
 import com.toxicbakery.androidthings.mirror.job.dispatcherJobServiceModule
 import com.toxicbakery.androidthings.mirror.module.clock.kodein.moduleClockKodein
-import com.toxicbakery.androidthings.mirror.module.currentweather.kodein.moduleCurrentWeatherKodein
+import com.toxicbakery.androidthings.mirror.module.weather.kodein.moduleWeatherKodein
 
 class MirrorApplication : Application(), KodeinAware {
 
@@ -17,7 +17,7 @@ class MirrorApplication : Application(), KodeinAware {
 
         // View Modules
         extend(moduleClockKodein)
-        extend(moduleCurrentWeatherKodein)
+        extend(moduleWeatherKodein)
     }
 
     override fun onCreate() {

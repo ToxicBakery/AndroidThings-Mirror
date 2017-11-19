@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.toxicbakery.androidthings.mirror.ui.MainActivity">
 
-    <com.toxicbakery.androidthings.mirror.module.currentweather.ui.view.CurrentWeatherViewLayout
+    <com.toxicbakery.androidthings.mirror.module.weather.currentweather.ui.view.CurrentWeatherViewLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

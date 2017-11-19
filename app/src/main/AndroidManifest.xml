@@ -31,7 +31,7 @@
         </activity>
 
         <service
-            android:name="com.toxicbakery.androidthings.mirror.module.currentweather.job.CurrentWeatherJobService"
+            android:name="com.toxicbakery.androidthings.mirror.module.weather.currentweather.job.CurrentWeatherJobService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
