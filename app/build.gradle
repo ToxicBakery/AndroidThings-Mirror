@@ -81,5 +81,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     implementation "com.firebase:firebase-jobdispatcher:0.8.4"
 
+    implementation project(":ical")
+
     compileOnly "com.google.android.things:androidthings:0.5.1-devpreview"
 }
