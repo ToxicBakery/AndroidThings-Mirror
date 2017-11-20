@@ -8,4 +8,5 @@
     <string name="weather_precipitation">Precipitation: <xliff:g example="15" id="precipitation">%1$s</xliff:g>%%</string>
     <string name="weather_humidity">Humidity: <xliff:g example="83" id="humidity">%1$s</xliff:g>%%</string>
     <string name="weather_wind">Wind: <xliff:g example="5" id="wind">%1$s</xliff:g> <xliff:g example="mph" id="speed_unit">%2$s</xliff:g></string>
+    <string name="weather_temperature_with_degree"><xliff:g example="79" id="temperature">%1$s</xliff:g>°</string>
 </resources>

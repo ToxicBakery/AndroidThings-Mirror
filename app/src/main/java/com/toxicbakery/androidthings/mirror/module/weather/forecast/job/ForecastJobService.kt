@@ -42,8 +42,8 @@ class ForecastJobService : DispatchableJobService() {
                 .setService(ForecastJobService::class.java)
                 .setTag(TAG)
                 .setRecurring(true)
-                // Execute every 15 to 20 minutes
-                .setTrigger(Trigger.executionWindow(15 * 60, 20 * 60))
+                // Execute every 60 to 120 minutes
+                .setTrigger(Trigger.executionWindow(60 * 60, 120 * 60))
                 .setReplaceCurrent(true)
                 .build()
                 .let { firebaseJobDispatcher.mustSchedule(it) }
