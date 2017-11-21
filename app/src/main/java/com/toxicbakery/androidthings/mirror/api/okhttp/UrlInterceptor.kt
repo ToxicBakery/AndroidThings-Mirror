@@ -10,14 +10,14 @@ abstract class UrlInterceptor : Interceptor {
     abstract fun intercept(urlBuilder: HttpUrl.Builder)
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        chain.request().let { originalChain: Request ->
-            val url = originalChain
+        chain.request().let { originalRequest: Request ->
+            val url = originalRequest
                     .url()
                     .newBuilder()
                     .also { intercept(it) }
                     .build()
 
-            return originalChain
+            return originalRequest
                     .newBuilder()
                     .url(url)
                     .build()

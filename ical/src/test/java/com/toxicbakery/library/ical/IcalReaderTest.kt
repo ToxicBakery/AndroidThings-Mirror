@@ -18,7 +18,6 @@ BEGIN:VEVENT
 DTSTART:20170823T223000Z
 DTEND:20170824T013000Z
 DTSTAMP:20171118T224627Z
-UID:1mqfi8r283u9b46vii4dartaqp@google.com
 CREATED:20170822T180809Z
 DESCRIPTION:For full details\, including the address\, and to RSVP see:\nht
  tps://www.meetup.com/Central-Florida-Android-Developers-Group/events/242591
@@ -36,7 +35,6 @@ BEGIN:VEVENT
 DTSTART:20170823T223000Z
 DTEND:20170824T013000Z
 DTSTAMP:20171118T224627Z
-UID:1mqfi8r283u9b46vii4dartaqp@google.com
 CREATED:20170822T180809Z
 DESCRIPTION:For full details\, including the address\, and to RSVP see:\nht
  tps://www.meetup.com/Central-Florida-Android-Developers-Group/events/242591
