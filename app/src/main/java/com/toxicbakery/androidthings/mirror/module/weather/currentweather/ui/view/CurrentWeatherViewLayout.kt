@@ -27,5 +27,5 @@ class CurrentWeatherViewLayout @JvmOverloads constructor(
 
     override val viewHolder: CurrentWeatherViewHolder = LayoutInflater.from(context)
             .inflate(R.layout.module_current_weather_layout, this, true)
-            .let { CurrentWeatherViewHolder(it) }
+            .let(::CurrentWeatherViewHolder)
 }

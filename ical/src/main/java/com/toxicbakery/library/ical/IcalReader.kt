@@ -57,13 +57,3 @@ internal data class MutableBlock(
         override val type: String,
         override val values: MutableMap<String, String> = mutableMapOf()
 ) : Block
-
-interface Block {
-    val type: String
-    val values: Map<String, String>
-}
-
-data class Ical(
-        val values: Map<String, String>,
-        val blocks: List<Block>
-)

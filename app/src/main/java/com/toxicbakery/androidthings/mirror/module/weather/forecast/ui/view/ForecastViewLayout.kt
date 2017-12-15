@@ -27,6 +27,6 @@ class ForecastViewLayout @JvmOverloads constructor(
 
     override val viewHolder: ForecastViewHolder = LayoutInflater.from(context)
             .inflate(R.layout.module_forecast_layout, this, true)
-            .let { ForecastViewHolder(it) }
+            .let(::ForecastViewHolder)
 
 }

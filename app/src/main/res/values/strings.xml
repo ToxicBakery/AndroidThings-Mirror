@@ -9,4 +9,9 @@
     <string name="weather_humidity">Humidity: <xliff:g example="83" id="humidity">%1$s</xliff:g>%%</string>
     <string name="weather_wind">Wind: <xliff:g example="5" id="wind">%1$s</xliff:g> <xliff:g example="mph" id="speed_unit">%2$s</xliff:g></string>
     <string name="weather_temperature_with_degree"><xliff:g example="79" id="temperature">%1$s</xliff:g>°</string>
+
+    <string name="calendar_title">Events</string>
+    <string name="calender_event_none">No upcoming events</string>
+    <string name="calendar_event_all_day">All Day</string>
+    <string name="calendar_event_duration"><xliff:g example="10:00 AM">%1$s</xliff:g> - <xliff:g example="1:00 PM">%2$s</xliff:g></string>
 </resources>

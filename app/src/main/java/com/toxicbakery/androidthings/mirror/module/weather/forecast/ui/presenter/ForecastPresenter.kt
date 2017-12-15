@@ -27,7 +27,8 @@ class ForecastPresenterImpl(
                 forecastManager.getForecast()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ viewHolder.bind(it) },
+                        .subscribe(
+                                { viewHolder.bind(it) },
                                 { Timber.e(it, "Failed to bind view holder") }),
                 updateForecastManager.updateForecast()
                         .observeOn(AndroidSchedulers.mainThread())

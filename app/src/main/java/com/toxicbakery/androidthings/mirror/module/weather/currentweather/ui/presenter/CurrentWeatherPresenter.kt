@@ -27,7 +27,8 @@ class CurrentWeatherPresenterImpl(
                 weatherManager.getCurrentWeather()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ viewHolder.bind(it) },
+                        .subscribe(
+                                { viewHolder.bind(it) },
                                 { Timber.e(it, "Failed to bind view holder") }),
                 updateCurrentWeatherManager.updateCurrentWeather()
                         .observeOn(AndroidSchedulers.mainThread())

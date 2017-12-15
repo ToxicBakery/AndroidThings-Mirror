@@ -9,7 +9,6 @@ import com.toxicbakery.androidthings.mirror.module.calendar.store.CalendarStore
 import com.toxicbakery.androidthings.mirror.module.calendar.store.calendarStoreModule
 import com.toxicbakery.library.ical.Ical
 import io.reactivex.Observable
-import retrofit2.Retrofit
 
 class CalendarManagerImpl(
         private val calendarApi: CalendarApi,
@@ -35,6 +34,5 @@ interface CalendarManager {
 
 val calendarManagerModule = Kodein.Module {
     import(calendarStoreModule)
-    bind<CalendarApi>() with provider { instance<Retrofit>().create(CalendarApi::class.java) }
     bind<CalendarManager>() with provider { CalendarManagerImpl(instance(), instance()) }
 }

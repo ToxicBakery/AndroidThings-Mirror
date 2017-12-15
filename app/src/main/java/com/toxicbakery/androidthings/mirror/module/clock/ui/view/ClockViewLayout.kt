@@ -25,6 +25,6 @@ class ClockViewLayout @JvmOverloads constructor(
 
     override val viewHolder: ClockViewHolder = LayoutInflater.from(context)
             .inflate(R.layout.module_clock, this, true)
-            .let { ClockViewHolder(it) }
+            .let(::ClockViewHolder)
 
 }
