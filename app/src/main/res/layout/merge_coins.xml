@@ -11,7 +11,7 @@
         android:layout_marginTop="16dp"
         app:coinName="bitcoin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -23,7 +23,7 @@
         android:layout_marginTop="16dp"
         app:coinName="ripple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_bitcoin" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -35,7 +35,7 @@
         android:layout_marginTop="16dp"
         app:coinName="stellar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_ripple" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -47,7 +47,7 @@
         android:layout_marginTop="16dp"
         app:coinName="verge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_stellar" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -59,7 +59,7 @@
         android:layout_marginTop="16dp"
         app:coinName="siacoin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_verge" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -71,7 +71,7 @@
         android:layout_marginTop="16dp"
         app:coinName="bytecoin-bcn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_siacoin" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -83,7 +83,7 @@
         android:layout_marginTop="16dp"
         app:coinName="intensecoin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_bytecoin" />
 
     <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
@@ -95,7 +95,7 @@
         android:layout_marginTop="16dp"
         app:coinName="electroneum"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toBottomOf="@+id/coin_value_intensecoin" />
 
 </merge>
