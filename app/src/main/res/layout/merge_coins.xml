@@ -74,4 +74,13 @@
         android:layout_marginTop="16dp"
         app:coinName="electroneum" />
 
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/basic-attention-token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="basic-attention-token" />
+
 </merge>

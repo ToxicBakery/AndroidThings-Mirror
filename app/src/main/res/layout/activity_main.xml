@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/forecast" />
 
     <LinearLayout
+        android:id="@+id/coins_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -50,6 +51,7 @@
     </LinearLayout>
 
     <com.toxicbakery.androidthings.mirror.module.calendar.ui.view.CalendarViewLayout
+        android:id="@+id/calendar"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginEnd="16dp"
@@ -64,13 +66,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="269dp" />
+        app:layout_constraintGuide_begin="270dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="250dp" />
+        app:layout_constraintGuide_end="270dp" />
+
+    <com.toxicbakery.androidthings.mirror.module.newsfeed.ui.view.NewsFeedViewLayout
+        android:id="@+id/news_feed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/coins_layout"
+        app:layout_constraintStart_toEndOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/calendar">
+
+    </com.toxicbakery.androidthings.mirror.module.newsfeed.ui.view.NewsFeedViewLayout>
 
 </android.support.constraint.ConstraintLayout>

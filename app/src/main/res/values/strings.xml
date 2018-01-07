@@ -18,4 +18,7 @@
     <string name="coin_value_price_usd" translatable="false">$<xliff:g example="1.23">%1$s</xliff:g></string>
     <string name="coin_value_price_1h_change" translatable="false">(<xliff:g example="1.23">%1$s</xliff:g>%%)</string>
     <string name="coin_value_name_and_symbol" translatable="false"><xliff:g example="Bitcoin">%1$s</xliff:g> - <xliff:g example="BTC">%2$s</xliff:g></string>
+
+    <string name="news_feed_title">News</string>
+    <string name="news_feed_none">Empty feed</string>
 </resources>

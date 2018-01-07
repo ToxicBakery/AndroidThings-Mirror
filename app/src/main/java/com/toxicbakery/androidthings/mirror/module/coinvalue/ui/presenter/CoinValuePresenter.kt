@@ -24,7 +24,7 @@ class CoinValuePresenterImpl(
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                { viewHolder.bind(it) },
+                                viewHolder::bind,
                                 { Timber.e(it, "Failed to bind view holder") }))
     }
 

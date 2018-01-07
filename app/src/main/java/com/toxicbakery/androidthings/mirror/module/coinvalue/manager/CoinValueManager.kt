@@ -9,27 +9,18 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 class CoinValueManagerImpl(
-        coinValueUpdateManager: CoinValueUpdateManager
+        private val tickerApi: TickerApi
 ) : CoinValueManager {
 
     private val update =
-            coinValueUpdateManager.updateCoinValues()
+            Observable.interval(0, 5, TimeUnit.MINUTES)
+                    .flatMap { tickerApi.ticker() }
+                    .map { responseMapper(it) }
                     .share()
 
     override fun getCoinValue(coinName: String): Observable<CoinValue> =
             update.flatMap { Observable.fromIterable(it) }
                     .filter { it.id == coinName }
-
-}
-
-class CoinValueUpdateManagerImpl(
-        private val tickerApi: TickerApi
-) : CoinValueUpdateManager {
-
-    override fun updateCoinValues(): Observable<List<CoinValue>> =
-            Observable.interval(0, 5, TimeUnit.MINUTES)
-                    .flatMap { tickerApi.ticker() }
-                    .map { responseMapper(it) }
 
 }
 
@@ -39,22 +30,11 @@ interface CoinValueManager {
 
 }
 
-interface CoinValueUpdateManager {
-
-    fun updateCoinValues(): Observable<List<CoinValue>>
-
-}
-
 val coinValueManagerModule = Kodein.Module {
     bind<TickerApi>() with provider { instance<Retrofit>().create(TickerApi::class.java) }
-    bind<CoinValueUpdateManager>() with provider {
-        CoinValueUpdateManagerImpl(
-                tickerApi = instance()
-        )
-    }
     bind<CoinValueManager>() with singleton {
         CoinValueManagerImpl(
-                coinValueUpdateManager = instance()
+                tickerApi = instance()
         )
     }
 }

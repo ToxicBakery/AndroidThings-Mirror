@@ -16,7 +16,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarRowViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarRowViewHolder =
             LayoutInflater.from(parent.context)
                     .inflate(R.layout.calendar_row, parent, false)
-                    .let { CalendarRowViewHolder(it) }
+                    .let(::CalendarRowViewHolder)
 
     override fun getItemCount(): Int = blocks.size
 

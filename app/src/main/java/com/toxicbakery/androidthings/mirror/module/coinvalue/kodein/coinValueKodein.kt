@@ -5,7 +5,6 @@ import com.toxicbakery.androidthings.mirror.module.coinvalue.api.coinValueApiMod
 import com.toxicbakery.androidthings.mirror.module.coinvalue.manager.coinValueManagerModule
 import com.toxicbakery.androidthings.mirror.module.coinvalue.ui.presenter.coinValuePresenterModule
 
-
 val coinValueKodein = Kodein {
     import(coinValueApiModule)
     import(coinValuePresenterModule)

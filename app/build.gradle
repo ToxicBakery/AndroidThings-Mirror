@@ -10,7 +10,7 @@ repositories {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion="27.0.1"
+    buildToolsVersion = "27.0.3"
     defaultConfig {
         applicationId "com.toxicbakery.androidthings.example"
         minSdkVersion 26
@@ -22,6 +22,10 @@ android {
         // ical format calendar URL. Google Calendar can be used for example
         // https://support.google.com/calendar/answer/37648?hl=en
         resValue "string", "calendar_ical_url", getLocalProperty("calendarIcalUrl")
+
+        // RSS News feed URL. Google News provides RSS feeds to queries and topics for example
+        // https://news.google.com/news/rss/
+        resValue "string", "news_feed_url", getLocalProperty("newsFeedUrl")
 
         // Open Weather API KEY, place in local.properties as `openWeatherApiKey=...`
         resValue "string", "open_weather_api_key", getLocalProperty("openWeatherApiKey")
@@ -54,13 +58,14 @@ dependencies {
     androidTestImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlin_version"
     testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlin_version"
 
-    def androidSupportVersion = "27.0.1"
+    def androidSupportVersion = "27.0.2"
     implementation "com.android.support:appcompat-v7:$androidSupportVersion"
     implementation "com.android.support:design:$androidSupportVersion"
 
     def retrofitVersion = "2.3.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-simplexml:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     def kodeinVersion = "4.1.0"
@@ -81,6 +86,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:3.8.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     implementation "com.firebase:firebase-jobdispatcher:0.8.4"
+    implementation "com.squareup.picasso:picasso:2.5.2"
+    implementation "org.jsoup:jsoup:1.11.2"
 
     implementation project(":ical")
 
