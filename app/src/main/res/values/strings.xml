@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Android Things Weather</string>
+    <string name="app_name">Android Things Mirror</string>
     <string name="open_weather_base_url">http://api.openweathermap.org/data/2.5/</string>
 
     <string name="weather_temperature_unit_imperial">F</string>
