@@ -39,7 +39,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forecast" />
 
-    <include layout="@layout/merge_coins" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_right">
+
+        <include layout="@layout/merge_coins" />
+    </LinearLayout>
 
     <com.toxicbakery.androidthings.mirror.module.calendar.ui.view.CalendarViewLayout
         android:layout_width="0dp"
@@ -63,6 +71,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="217dp" />
+        app:layout_constraintGuide_end="250dp" />
 
 </android.support.constraint.ConstraintLayout>
