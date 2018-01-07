@@ -14,4 +14,7 @@
     <string name="calender_event_none">No upcoming events</string>
     <string name="calendar_event_all_day">All Day</string>
     <string name="calendar_event_duration"><xliff:g example="10:00 AM">%1$s</xliff:g> - <xliff:g example="1:00 PM">%2$s</xliff:g></string>
+
+    <string name="coin_value_price_usd" translatable="false">$<xliff:g example="1.23">%1$s</xliff:g></string>
+    <string name="coin_value_name_and_symbol" translatable="false"><xliff:g example="Bitcoin">%1$s</xliff:g> - <xliff:g example="BTC">%2$s</xliff:g></string>
 </resources>

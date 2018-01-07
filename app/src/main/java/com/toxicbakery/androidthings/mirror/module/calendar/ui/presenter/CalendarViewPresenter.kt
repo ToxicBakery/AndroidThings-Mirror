@@ -4,7 +4,6 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import com.toxicbakery.androidthings.mirror.job.JobManager
 import com.toxicbakery.androidthings.mirror.module.calendar.manager.CalendarManager
 import com.toxicbakery.androidthings.mirror.module.calendar.ui.viewholder.CalendarViewHolder
 import com.toxicbakery.androidthings.mirror.ui.presenter.Presenter
@@ -16,8 +15,7 @@ import timber.log.Timber
 import java.util.*
 
 internal class CalendarViewPresenterImpl(
-        private val calendarManager: CalendarManager,
-        private val jobManager: JobManager
+        private val calendarManager: CalendarManager
 ) : CalendarViewPresenter {
 
     private var subscriptions = CompositeDisposable()
@@ -28,19 +26,11 @@ internal class CalendarViewPresenterImpl(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 { updateViewHolder(viewHolder, it) },
-                                { Timber.e(it, "Failed to bind view holder") }),
-                calendarManager.updateCalendar()
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                { Timber.d("Updated Calendar") },
-                                { Timber.e(it, "Failed to update Calendar") }))
-
-        jobManager.registerJobs()
+                                { Timber.e(it, "Failed to bind view holder") }))
     }
 
     override fun unbindViewHolder() {
         subscriptions.clear()
-        jobManager.unregisterJobs()
     }
 
     private fun updateViewHolder(viewHolder: CalendarViewHolder, ical: Ical) =
@@ -59,8 +49,7 @@ interface CalendarViewPresenter : Presenter<CalendarViewHolder>
 val calendarViewPresenterModule = Kodein.Module {
     bind<CalendarViewPresenter>() with provider {
         CalendarViewPresenterImpl(
-                calendarManager = instance(),
-                jobManager = instance()
+                calendarManager = instance()
         )
     }
 }

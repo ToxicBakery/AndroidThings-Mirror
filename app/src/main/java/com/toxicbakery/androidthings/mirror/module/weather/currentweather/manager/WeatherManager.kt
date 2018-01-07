@@ -7,24 +7,21 @@ import com.github.salomonbrys.kodein.provider
 import com.toxicbakery.androidthings.mirror.api.responseMapper
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.api.WeatherApi
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.model.CurrentWeather
-import com.toxicbakery.androidthings.mirror.module.weather.currentweather.store.WeatherStore
-import com.toxicbakery.androidthings.mirror.module.weather.currentweather.store.weatherStoreModule
-import com.toxicbakery.androidthings.mirror.module.weather.model.ZipCode
+import com.toxicbakery.androidthings.mirror.module.weather.manager.ZipCodeManager
 import io.reactivex.Observable
 import retrofit2.Retrofit
+import java.util.concurrent.TimeUnit
 
 class WeatherManagerImpl(
         private val weatherApi: WeatherApi,
-        private val weatherStore: WeatherStore
+        private val zipCodeManager: ZipCodeManager
 ) : WeatherManager {
 
     override fun getCurrentWeather(): Observable<CurrentWeather> =
-            weatherStore.currentWeatherObservable
-
-    override fun updateCurrentWeather(zipCode: ZipCode): Observable<CurrentWeather> =
-            weatherApi.currentWeather(zipCode)
+            Observable.interval(0, 30, TimeUnit.MINUTES)
+                    .flatMap { zipCodeManager.getZipCode() }
+                    .flatMap(weatherApi::currentWeather)
                     .map { responseMapper(it) }
-                    .doOnNext { weatherStore.saveCurrentWeather(it) }
 
 }
 
@@ -32,12 +29,14 @@ interface WeatherManager {
 
     fun getCurrentWeather(): Observable<CurrentWeather>
 
-    fun updateCurrentWeather(zipCode: ZipCode): Observable<CurrentWeather>
-
 }
 
 val weatherManagerModule = Kodein.Module {
-    import(weatherStoreModule)
     bind<WeatherApi>() with provider { instance<Retrofit>().create(WeatherApi::class.java) }
-    bind<WeatherManager>() with provider { WeatherManagerImpl(instance(), instance()) }
+    bind<WeatherManager>() with provider {
+        WeatherManagerImpl(
+                weatherApi = instance(),
+                zipCodeManager = instance()
+        )
+    }
 }

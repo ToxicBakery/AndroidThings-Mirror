@@ -1,26 +1,26 @@
-package com.toxicbakery.androidthings.mirror.module.weather.forecast.ui.presenter
+package com.toxicbakery.androidthings.mirror.module.coinvalue.ui.presenter
 
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import com.toxicbakery.androidthings.mirror.module.weather.forecast.manager.ForecastManager
-import com.toxicbakery.androidthings.mirror.module.weather.forecast.ui.viewholder.ForecastViewHolder
+import com.toxicbakery.androidthings.mirror.module.coinvalue.manager.CoinValueManager
+import com.toxicbakery.androidthings.mirror.module.coinvalue.ui.viewholder.CoinValueViewHolder
 import com.toxicbakery.androidthings.mirror.ui.presenter.Presenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ForecastPresenterImpl(
-        private val forecastManager: ForecastManager
-) : ForecastPresenter {
+class CoinValuePresenterImpl(
+        private val coinValueManager: CoinValueManager
+) : CoinValuePresenter {
 
     private val subscriptions: CompositeDisposable = CompositeDisposable()
 
-    override fun bindViewHolder(viewHolder: ForecastViewHolder) {
+    override fun bindViewHolder(viewHolder: CoinValueViewHolder) {
         subscriptions.addAll(
-                forecastManager.getForecast()
+                coinValueManager.getCoinValue(viewHolder.coinName)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
@@ -34,12 +34,12 @@ class ForecastPresenterImpl(
 
 }
 
-interface ForecastPresenter : Presenter<ForecastViewHolder>
+interface CoinValuePresenter : Presenter<CoinValueViewHolder>
 
-val forecastPresenterModule = Kodein.Module {
-    bind<ForecastPresenter>() with provider {
-        ForecastPresenterImpl(
-                forecastManager = instance()
+val coinValuePresenterModule = Kodein.Module {
+    bind<CoinValuePresenter>() with provider {
+        CoinValuePresenterImpl(
+                coinValueManager = instance()
         )
     }
 }

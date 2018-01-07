@@ -5,22 +5,17 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.toxicbakery.androidthings.mirror.module.calendar.api.CalendarApi
-import com.toxicbakery.androidthings.mirror.module.calendar.store.CalendarStore
-import com.toxicbakery.androidthings.mirror.module.calendar.store.calendarStoreModule
 import com.toxicbakery.library.ical.Ical
 import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 class CalendarManagerImpl(
-        private val calendarApi: CalendarApi,
-        private val calendarStore: CalendarStore
+        private val calendarApi: CalendarApi
 ) : CalendarManager {
 
     override fun getCalendar(): Observable<Ical> =
-            calendarStore.calendarObservable
-
-    override fun updateCalendar(): Observable<Ical> =
-            calendarApi.getCalendar()
-                    .doOnNext { calendarStore.saveCalendar(it) }
+            Observable.interval(0, 30, TimeUnit.MINUTES)
+                    .flatMap { calendarApi.getCalendar() }
 
 }
 
@@ -28,11 +23,12 @@ interface CalendarManager {
 
     fun getCalendar(): Observable<Ical>
 
-    fun updateCalendar(): Observable<Ical>
-
 }
 
 val calendarManagerModule = Kodein.Module {
-    import(calendarStoreModule)
-    bind<CalendarManager>() with provider { CalendarManagerImpl(instance(), instance()) }
+    bind<CalendarManager>() with provider {
+        CalendarManagerImpl(
+                calendarApi = instance()
+        )
+    }
 }

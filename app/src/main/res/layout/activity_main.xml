@@ -10,8 +10,10 @@
         android:id="@+id/current_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,8 +21,10 @@
         android:id="@+id/forecast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_weather" />
 
@@ -28,21 +32,37 @@
         android:id="@+id/clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forecast" />
 
+    <include layout="@layout/merge_coins" />
+
     <com.toxicbakery.androidthings.mirror.module.calendar.ui.view.CalendarViewLayout
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clock">
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </com.toxicbakery.androidthings.mirror.module.calendar.ui.view.CalendarViewLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83" />
 
 </android.support.constraint.ConstraintLayout>

@@ -29,28 +29,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name="com.toxicbakery.androidthings.mirror.module.calendar.job.CalendarJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.toxicbakery.androidthings.mirror.module.weather.currentweather.job.CurrentWeatherJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.toxicbakery.androidthings.mirror.module.weather.forecast.job.ForecastJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

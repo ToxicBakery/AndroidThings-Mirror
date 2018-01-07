@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_bitcoin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="bitcoin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_ripple"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="ripple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_bitcoin" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_stellar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="stellar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_ripple" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_verge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="verge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_stellar" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_siacoin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="siacoin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_verge" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_bytecoin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="bytecoin-bcn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_siacoin" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_intensecoin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="intensecoin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_bytecoin" />
+
+    <com.toxicbakery.androidthings.mirror.module.coinvalue.ui.view.CoinValueViewLayout
+        android:id="@+id/coin_value_electroneum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:coinName="electroneum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value_intensecoin" />
+
+</merge>

@@ -10,7 +10,7 @@ interface TickerApi {
     /**
      * Get the current ticker coin value.
      */
-    @GET("ticker/{coinName}/")
-    fun ticker(): Observable<Response<CoinValue>>
+    @GET("ticker/?limit=0")
+    fun ticker(): Observable<Response<List<CoinValue>>>
 
 }
