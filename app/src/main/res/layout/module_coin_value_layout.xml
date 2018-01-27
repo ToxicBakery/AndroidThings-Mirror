@@ -12,9 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:lines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="@+id/coin_value"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="(-15%)" />
+        tools:text="(-12.05%)" />
 
     <TextView
         android:id="@+id/coin_value"
@@ -22,18 +24,23 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:gravity="end"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:lines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toStartOf="@+id/coin_1h_change"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="$17,023.95" />
 
     <TextView
         android:id="@+id/coin_name_and_symbol"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:gravity="end"
+        android:lines="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintTop_toBottomOf="@+id/coin_1h_change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coin_value"
         tools:text="Bitcoin - BTC" />
 
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_left"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_left"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,22 +33,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forecast" />
 
-    <LinearLayout
+    <include
         android:id="@+id/coins_layout"
+        layout="@layout/merge_coins"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline_right">
-
-        <include layout="@layout/merge_coins" />
-    </LinearLayout>
+        app:layout_constraintStart_toEndOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.toxicbakery.androidthings.mirror.module.calendar.ui.view.CalendarViewLayout
         android:id="@+id/calendar"
@@ -66,28 +69,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="270dp" />
+        app:layout_constraintGuide_begin="248dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="270dp" />
+        app:layout_constraintGuide_end="197dp" />
 
     <com.toxicbakery.androidthings.mirror.module.newsfeed.ui.view.NewsFeedViewLayout
         android:id="@+id/news_feed"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/coins_layout"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toEndOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/calendar">
-
-    </com.toxicbakery.androidthings.mirror.module.newsfeed.ui.view.NewsFeedViewLayout>
+        app:layout_constraintTop_toBottomOf="@+id/calendar" />
 
 </android.support.constraint.ConstraintLayout>
