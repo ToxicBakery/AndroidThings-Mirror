@@ -19,7 +19,7 @@ class WeatherManagerImpl(
 
     override fun getCurrentWeather(): Observable<CurrentWeather> =
             Observable.interval(0, 30, TimeUnit.MINUTES)
-                    .flatMap { zipCodeManager.getZipCode() }
+                    .flatMap { zipCodeManager.getZipCode().onErrorResumeNext(Observable.empty()) }
                     .flatMap(weatherApi::currentWeather)
                     .map { responseMapper(it) }
 

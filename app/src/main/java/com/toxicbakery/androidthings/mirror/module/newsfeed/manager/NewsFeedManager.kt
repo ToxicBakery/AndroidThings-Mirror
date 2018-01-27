@@ -14,7 +14,7 @@ class NewsFeedManagerImpl(
 
     private val update: Observable<Feed> =
             Observable.interval(0, 10, TimeUnit.MINUTES)
-                    .flatMap { newsFeedApi.feed() }
+                    .flatMap { newsFeedApi.feed().onErrorResumeNext(Observable.empty()) }
                     .map { responseMapper(it) }
                     .share()
 

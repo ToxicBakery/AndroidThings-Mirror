@@ -36,10 +36,19 @@ android {
         // ZipCode and Country Code in the format of 12345,us
         resValue "string", "zip_code_and_country_code", getLocalProperty("zipCodeAndCountryCode")
     }
+    signingConfigs {
+        release {
+            storeFile file("../keystore.jks")
+            storePassword getLocalProperty("keystorepassword")
+            keyAlias "mirror"
+            keyPassword getLocalProperty("keystorepassword")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -65,7 +74,11 @@ dependencies {
     def retrofitVersion = "2.3.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-simplexml:$retrofitVersion"
+    implementation("com.squareup.retrofit2:converter-simplexml:$retrofitVersion") {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     def kodeinVersion = "4.1.0"
@@ -74,7 +87,7 @@ dependencies {
 
     // The version of play services must match the play services of the bundled android things package
     // See: https://developer.android.com/things/preview/releases.html for version details
-    implementation("com.google.android.gms:play-services-location:11.0.4") {
+    implementation("com.google.android.gms:play-services-location:11.8.0") {
         exclude group: "com.android.support"
     }
     implementation "com.android.support.constraint:constraint-layout:1.0.2"
@@ -91,5 +104,5 @@ dependencies {
 
     implementation project(":ical")
 
-    compileOnly "com.google.android.things:androidthings:0.5.1-devpreview"
+    compileOnly "com.google.android.things:androidthings:0.6.1-devpreview"
 }

@@ -14,7 +14,7 @@ class CoinValueManagerImpl(
 
     private val update =
             Observable.interval(0, 5, TimeUnit.MINUTES)
-                    .flatMap { tickerApi.ticker() }
+                    .flatMap { tickerApi.ticker().onErrorResumeNext(Observable.empty()) }
                     .map { responseMapper(it) }
                     .share()
 

@@ -15,7 +15,7 @@ class CalendarManagerImpl(
 
     override fun getCalendar(): Observable<Ical> =
             Observable.interval(0, 30, TimeUnit.MINUTES)
-                    .flatMap { calendarApi.getCalendar() }
+                    .flatMap { calendarApi.getCalendar().onErrorResumeNext(Observable.empty()) }
 
 }
 

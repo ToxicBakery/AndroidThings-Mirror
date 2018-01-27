@@ -19,7 +19,7 @@ class ForecastManagerImpl(
 
     override fun getForecast(): Observable<Forecast> =
             Observable.interval(0, 30, TimeUnit.MINUTES)
-                    .flatMap { zipCodeManager.getZipCode() }
+                    .flatMap { zipCodeManager.getZipCode().onErrorResumeNext(Observable.empty()) }
                     .flatMap(forecastApi::forecast)
                     .map { responseMapper(it) }
 
