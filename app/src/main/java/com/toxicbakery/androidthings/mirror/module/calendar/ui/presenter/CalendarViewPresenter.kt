@@ -35,8 +35,9 @@ internal class CalendarViewPresenterImpl(
 
     private fun updateViewHolder(viewHolder: CalendarViewHolder, ical: Ical) =
             ical.blocks
-                    .take(5)
                     .filter { block: Block -> block.startDateInTheFuture }
+                    .sortedBy { block: Block -> block.readStartDate() }
+                    .take(5)
                     .let(viewHolder::bind)
 
     private val Block.startDateInTheFuture: Boolean

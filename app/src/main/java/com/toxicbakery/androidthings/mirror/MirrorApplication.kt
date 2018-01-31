@@ -5,6 +5,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.KodeinAware
 import com.github.salomonbrys.kodein.android.androidActivityScope
 import com.github.salomonbrys.kodein.lazy
+import com.google.android.things.device.TimeManager
 
 class MirrorApplication : Application(), KodeinAware {
 
@@ -14,6 +15,7 @@ class MirrorApplication : Application(), KodeinAware {
 
     override fun onCreate() {
         super.onCreate()
+        TimeManager().setTimeZone("America/New_York")
         registerActivityLifecycleCallbacks(androidActivityScope.lifecycleManager)
         prepareApplication()
     }

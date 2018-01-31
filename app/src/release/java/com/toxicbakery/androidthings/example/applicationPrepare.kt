@@ -1,3 +1,7 @@
 package com.toxicbakery.androidthings.mirror
 
-fun prepareApplication() = Unit
+import timber.log.Timber
+
+fun prepareApplication() {
+    Timber.plant(Timber.DebugTree())
+}

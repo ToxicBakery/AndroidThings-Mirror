@@ -16,10 +16,8 @@ class CalendarRowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     private val durationTextView: TextView by bind(R.id.duration)
     private val titleTextView: TextView by bind(R.id.title)
 
-    // Sample format 20171118T224627Z
-    private val timeStampParser = formatter("yyyyMMdd'T'HHmmss'Z'")
     private val dayOfWeekFormatter = formatter("EEE")
-    private val timeFormatter: SimpleDateFormat = formatter("k:mm a")
+    private val timeFormatter: SimpleDateFormat = formatter("hh:mm a")
     private val monthAndDayFormatter = formatter("MMM dd")
 
     fun bind(block: Block) {
@@ -47,7 +45,7 @@ class CalendarRowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
     private fun parserDateTime(dateTime: String): Date =
             if (dateTime.isEmpty()) Date()
-            else timeStampParser.parse(dateTime)
+            else Block.parseDate(dateTime)
 
     private fun Block.value(name: String, default: String = "") =
             values.getOrDefault(name, default)
