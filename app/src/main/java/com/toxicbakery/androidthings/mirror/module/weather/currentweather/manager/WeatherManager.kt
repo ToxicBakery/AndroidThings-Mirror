@@ -17,17 +17,17 @@ class WeatherManagerImpl(
         private val zipCodeManager: ZipCodeManager
 ) : WeatherManager {
 
-    override fun getCurrentWeather(): Observable<CurrentWeather> =
-            Observable.interval(0, 30, TimeUnit.MINUTES)
-                    .flatMap { zipCodeManager.getZipCode().onErrorResumeNext(Observable.empty()) }
-                    .flatMap(weatherApi::currentWeather)
-                    .map { responseMapper(it) }
+    override val currentWeather: Observable<CurrentWeather>
+        get() = Observable.interval(0, 30, TimeUnit.MINUTES)
+                .flatMap { zipCodeManager.zipCode.onErrorResumeNext(Observable.empty()) }
+                .flatMap(weatherApi::currentWeather)
+                .map { responseMapper(it) }
 
 }
 
 interface WeatherManager {
 
-    fun getCurrentWeather(): Observable<CurrentWeather>
+    val currentWeather: Observable<CurrentWeather>
 
 }
 

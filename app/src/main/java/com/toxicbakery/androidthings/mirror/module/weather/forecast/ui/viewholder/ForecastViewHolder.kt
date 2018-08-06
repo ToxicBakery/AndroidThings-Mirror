@@ -23,7 +23,6 @@ class ForecastViewHolder(
                 .toSortedMap()
                 .map(Map.Entry<Int, List<ForecastRow>>::value)
 
-        println(forecastGroupedByDays)
         forecastGroupedByDays.getOrNull(0)?.let { forecastDayOne.bind(it) }
         forecastGroupedByDays.getOrNull(1)?.let { forecastDayTwo.bind(it) }
         forecastGroupedByDays.getOrNull(2)?.let { forecastDayThree.bind(it) }

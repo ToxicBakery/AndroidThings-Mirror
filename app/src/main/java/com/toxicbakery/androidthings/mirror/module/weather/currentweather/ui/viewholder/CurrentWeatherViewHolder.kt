@@ -1,5 +1,6 @@
 package com.toxicbakery.androidthings.mirror.module.weather.currentweather.ui.viewholder
 
+import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.icu.text.SimpleDateFormat
 import android.location.Geocoder
@@ -8,11 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.toxicbakery.androidthings.mirror.BuildConfig
 import com.toxicbakery.androidthings.mirror.R
-import com.toxicbakery.androidthings.mirror.module.weather.model.Coord
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.model.CurrentWeather
+import com.toxicbakery.androidthings.mirror.module.weather.model.Coord
 import com.toxicbakery.androidthings.mirror.module.weather.model.Weather
 import com.toxicbakery.androidthings.mirror.ui.viewholder.ViewHolder
 import com.toxicbakery.androidthings.mirror.util.round
+import io.reactivex.Observable
+import timber.log.Timber
 import java.util.*
 
 class CurrentWeatherViewHolder(
@@ -38,10 +41,16 @@ class CurrentWeatherViewHolder(
         setTemperatureScale()
     }
 
+    @SuppressLint("SetTextI18n")
     internal fun setLocation(coord: Coord) {
-        locationTextView.text = coord.let { geoCoder.getFromLocation(it.lat, it.lon, 1) }
-                .firstOrNull()
-                ?.let { "${it.locality}, ${it.adminArea}" }
+        Observable.just(coord)
+                .doOnNext { coordinates -> Timber.d("Geodecoding coordinates (%s, %s)", coordinates.lat, coordinates.lon) }
+                .map { coordinates -> geoCoder.getFromLocation(coordinates.lat, coordinates.lon, 1) }
+                .flatMap { addresses -> Observable.fromIterable(addresses) }
+                .firstOrError()
+                .subscribe(
+                        { address -> locationTextView.text = "${address.locality}, ${address.adminArea}" },
+                        { e -> Timber.e(e, "Failed to set location") })
     }
 
     internal fun setDate(date: Long) {

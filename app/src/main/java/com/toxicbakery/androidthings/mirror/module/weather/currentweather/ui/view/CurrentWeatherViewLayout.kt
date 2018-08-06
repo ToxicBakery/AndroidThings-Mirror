@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.toxicbakery.androidthings.mirror.R
-import com.toxicbakery.androidthings.mirror.module.weather.currentweather.kodein.currentWeatherKodein
+import com.toxicbakery.androidthings.mirror.module.weather.currentweather.kodein.currentWeatherModule
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.ui.presenter.CurrentWeatherPresenter
 import com.toxicbakery.androidthings.mirror.module.weather.currentweather.ui.viewholder.CurrentWeatherViewHolder
-import com.toxicbakery.androidthings.mirror.module.weather.kodein.weatherKodein
+import com.toxicbakery.androidthings.mirror.module.weather.kodein.weatherModule
 import com.toxicbakery.androidthings.mirror.ui.view.BaseMvpKodeinFrameLayout
 
 class CurrentWeatherViewLayout @JvmOverloads constructor(
@@ -18,9 +18,9 @@ class CurrentWeatherViewLayout @JvmOverloads constructor(
         defStyleAttr: Int = 0
 ) : BaseMvpKodeinFrameLayout<CurrentWeatherViewHolder, CurrentWeatherPresenter>(context, attrs, defStyleAttr) {
 
-    override fun provideOverridingKodein(): Kodein = Kodein {
-        extend(weatherKodein)
-        extend(currentWeatherKodein)
+    override fun provideOverridingModule() = Kodein.Module {
+        import(weatherModule)
+        import(currentWeatherModule)
     }
 
     override val presenter: CurrentWeatherPresenter by injector.instance()

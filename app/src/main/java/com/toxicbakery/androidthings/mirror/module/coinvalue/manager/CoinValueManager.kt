@@ -12,21 +12,20 @@ class CoinValueManagerImpl(
         private val tickerApi: TickerApi
 ) : CoinValueManager {
 
-    private val update =
+    override fun getCoinValue(coinId: Int): Observable<CoinValue> =
             Observable.interval(0, 5, TimeUnit.MINUTES)
-                    .flatMap { tickerApi.ticker().onErrorResumeNext(Observable.empty()) }
+                    .flatMap { tickerApi.ticker(coinId).onErrorResumeNext(Observable.empty()) }
                     .map { responseMapper(it) }
-                    .share()
-
-    override fun getCoinValue(coinName: String): Observable<CoinValue> =
-            update.flatMap { Observable.fromIterable(it) }
-                    .filter { it.id == coinName }
+                    .map { (data, metaData) ->
+                        if (metaData.error != null) throw Exception(metaData.error)
+                        else data
+                    }
 
 }
 
 interface CoinValueManager {
 
-    fun getCoinValue(coinName: String): Observable<CoinValue>
+    fun getCoinValue(coinId: Int): Observable<CoinValue>
 
 }
 

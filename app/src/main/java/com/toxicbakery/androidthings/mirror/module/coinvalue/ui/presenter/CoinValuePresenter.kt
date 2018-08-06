@@ -20,12 +20,14 @@ class CoinValuePresenterImpl(
 
     override fun bindViewHolder(viewHolder: CoinValueViewHolder) {
         subscriptions.addAll(
-                coinValueManager.getCoinValue(viewHolder.coinName)
+                coinValueManager.getCoinValue(viewHolder.coinId)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                viewHolder::bind,
-                                { Timber.e(it, "Failed to bind view holder") }))
+                        .subscribe(viewHolder::bind)
+                        { e ->
+                            Timber.tag(viewHolder.coinName)
+                                    .e(e, "Failed to bind view holder")
+                        })
     }
 
     override fun unbindViewHolder() {

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.toxicbakery.androidthings.mirror.R
-import com.toxicbakery.androidthings.mirror.module.calendar.kodein.calendarKodein
+import com.toxicbakery.androidthings.mirror.module.calendar.kodein.calendarModule
 import com.toxicbakery.androidthings.mirror.module.calendar.ui.adapter.CalendarAdapter
 import com.toxicbakery.androidthings.mirror.module.calendar.ui.presenter.CalendarViewPresenter
 import com.toxicbakery.androidthings.mirror.module.calendar.ui.viewholder.CalendarViewHolder
@@ -20,8 +20,8 @@ class CalendarViewLayout @JvmOverloads constructor(
 
     private val adapter = CalendarAdapter()
 
-    override fun provideOverridingKodein() = Kodein {
-        extend(calendarKodein)
+    override fun provideOverridingModule() = Kodein.Module {
+        import(calendarModule)
     }
 
     override val presenter: CalendarViewPresenter by injector.instance()

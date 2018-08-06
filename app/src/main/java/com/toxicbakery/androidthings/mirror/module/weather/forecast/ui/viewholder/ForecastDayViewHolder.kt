@@ -36,7 +36,7 @@ class ForecastDayViewHolder(
                         .sortedBy(Weather::icon)
                         .takeLast(2)
                         .groupBy { if (it.icon.endsWith("d")) "day" else "night" }
-                        .let { it.getOrElse("day", { it["night"] }) }
+                        .let { it.getOrElse("day") { it["night"] } }
                         ?.last()
                         ?.let {
                             resources.getIdentifier(

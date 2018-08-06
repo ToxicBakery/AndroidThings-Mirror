@@ -1,60 +1,46 @@
 package com.toxicbakery.androidthings.mirror.module.calendar.ui.adapter
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import com.toxicbakery.androidthings.mirror.R
 import com.toxicbakery.androidthings.mirror.util.bind
-import com.toxicbakery.library.ical.Block
+import net.fortuna.ical4j.model.Period
+import net.fortuna.ical4j.model.component.VEvent
 import java.text.SimpleDateFormat
 import java.util.*
 
+@SuppressLint("StringFormatInvalid")
 class CalendarRowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val dayOfWeekTextView: TextView by bind(R.id.day_of_week)
-    private val monthAndDayTextView: TextView by bind(R.id.month_and_day)
     private val durationTextView: TextView by bind(R.id.duration)
     private val titleTextView: TextView by bind(R.id.title)
 
-    private val dayOfWeekFormatter = formatter("EEE")
     private val timeFormatter: SimpleDateFormat = formatter("hh:mm a")
-    private val monthAndDayFormatter = formatter("MMM dd")
+    private val monthAndDayFormatter = formatter("EEE MMM dd")
+    private val allDayFormatter = formatter("EEE MMM dd")
 
-    fun bind(block: Block) {
-        val startDate = parserDateTime(block.value(VALUE_START_DATE, block.value(VALUE_DATE)))
-        val endDate = parserDateTime(block.value(VALUE_END_DATE, block.value(VALUE_DATE)))
-        dayOfWeekTextView.text = dayOfWeekFormatter.format(startDate)
-        monthAndDayTextView.text = monthAndDayFormatter.format(startDate)
-        titleTextView.text = block.value(VALUE_SUMMARY)
-        setDuration(startDate, endDate)
-    }
-
-    private fun setDuration(startDate: Date, endDate: Date) {
-        if (startDate == endDate) {
-            durationTextView.setText(R.string.calendar_event_all_day)
+    fun bind(period: Period, event: VEvent) {
+        titleTextView.text = event.summary.value
+        if (period.duration.days == 0) {
+            val monthAndDay = monthAndDayFormatter.format(period.start)
+            val hoursStart = timeFormatter.format(period.start)
+            val hoursEnd = timeFormatter.format(period.end)
+            durationTextView.text = itemView.context.getString(
+                    R.string.calendar_event_day_month_day_duration,
+                    monthAndDay, hoursStart, hoursEnd)
+        } else if (period.duration.days == 1 && period.duration.hours == 0) {
+            durationTextView.text = allDayFormatter.format(period.start)
         } else {
-            val start = timeFormatter.format(startDate)
-            val end = timeFormatter.format(endDate)
-            durationTextView.text = durationTextView.context
-                    .getString(R.string.calendar_event_duration, start, end)
+            durationTextView.text = itemView.resources.getString(
+                    R.string.calendar_event_duration,
+                    allDayFormatter.format(period.start),
+                    allDayFormatter.format(period.end))
         }
     }
 
     private fun formatter(format: String): SimpleDateFormat =
             SimpleDateFormat(format, Locale.ENGLISH)
-
-    private fun parserDateTime(dateTime: String): Date =
-            if (dateTime.isEmpty()) Date()
-            else Block.parseDate(dateTime)
-
-    private fun Block.value(name: String, default: String = "") =
-            values.getOrDefault(name, default)
-
-    companion object {
-        private const val VALUE_DATE = "DTSTAMP"
-        private const val VALUE_END_DATE = "DTEND"
-        private const val VALUE_START_DATE = "DTSTART"
-        private const val VALUE_SUMMARY = "SUMMARY"
-    }
 
 }

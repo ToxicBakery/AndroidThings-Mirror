@@ -13,7 +13,8 @@ class ZipCodeManagerImpl(
         private val zipCodeStore: ZipCodeStore
 ) : ZipCodeManager {
 
-    override fun getZipCode(): Observable<ZipCode> = zipCodeStore.zipCodeObservable
+    override val zipCode: Observable<ZipCode>
+        get() = zipCodeStore.zipCodeObservable
 
     override fun updateZipCode(zipCode: ZipCode) = zipCodeStore.saveZipCode(zipCode)
 
@@ -21,7 +22,7 @@ class ZipCodeManagerImpl(
 
 interface ZipCodeManager {
 
-    fun getZipCode(): Observable<ZipCode>
+    val zipCode: Observable<ZipCode>
 
     fun updateZipCode(zipCode: ZipCode)
 

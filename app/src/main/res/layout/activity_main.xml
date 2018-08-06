@@ -78,7 +78,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="197dp" />
 
-    <com.toxicbakery.androidthings.mirror.module.newsfeed.ui.view.NewsFeedViewLayout
+    <com.toxicbakery.androidthings.mirror.module.news.feed.ui.view.NewsFeedViewLayout
         android:id="@+id/news_feed"
         android:layout_width="0dp"
         android:layout_height="0dp"

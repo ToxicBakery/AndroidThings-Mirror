@@ -5,23 +5,29 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.toxicbakery.androidthings.mirror.module.calendar.api.CalendarApi
-import com.toxicbakery.library.ical.Ical
 import io.reactivex.Observable
+import net.fortuna.ical4j.model.Calendar
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class CalendarManagerImpl(
         private val calendarApi: CalendarApi
 ) : CalendarManager {
 
-    override fun getCalendar(): Observable<Ical> =
-            Observable.interval(0, 30, TimeUnit.MINUTES)
-                    .flatMap { calendarApi.getCalendar().onErrorResumeNext(Observable.empty()) }
+    private val calendarSource: Observable<Calendar>
+        get() = calendarApi.calendar
+                .doOnError { Timber.e(it, "Error fetching calendar.") }
+                .onErrorResumeNext(Observable.empty())
+
+    override val calendar: Observable<Calendar>
+        get() = Observable.interval(0, 30, TimeUnit.MINUTES)
+                .flatMap { calendarSource }
 
 }
 
 interface CalendarManager {
 
-    fun getCalendar(): Observable<Ical>
+    val calendar: Observable<Calendar>
 
 }
 

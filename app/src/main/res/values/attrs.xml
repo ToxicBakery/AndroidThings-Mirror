@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="CoinValueViewLayout">
         <attr name="coinName" format="string" />
+        <attr name="coinId" format="integer" />
     </declare-styleable>
 </resources>

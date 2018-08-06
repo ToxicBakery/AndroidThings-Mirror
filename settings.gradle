@@ -1,1 +1,1 @@
-include ':app', ':ical'
+include ':app'

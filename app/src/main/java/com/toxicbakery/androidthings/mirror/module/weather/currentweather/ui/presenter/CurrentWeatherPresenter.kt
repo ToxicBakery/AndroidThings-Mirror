@@ -20,7 +20,7 @@ class CurrentWeatherPresenterImpl(
 
     override fun bindViewHolder(viewHolder: CurrentWeatherViewHolder) {
         subscriptions.addAll(
-                weatherManager.getCurrentWeather()
+                weatherManager.currentWeather
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(

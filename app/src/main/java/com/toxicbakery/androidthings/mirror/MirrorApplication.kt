@@ -6,20 +6,28 @@ import com.github.salomonbrys.kodein.KodeinAware
 import com.github.salomonbrys.kodein.android.androidActivityScope
 import com.github.salomonbrys.kodein.lazy
 import com.google.android.things.device.TimeManager
-import com.toxicbakery.androidthings.mirror.util.isAndroidThings
-
+import com.toxicbakery.androidthings.mirror.api.okhttp.okhttpModule
+import timber.log.Timber
 
 class MirrorApplication : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
-        import(loggingModule)
+        import(httpLoggingInterceptorModule)
+        import(okhttpModule)
     }
 
     override fun onCreate() {
         super.onCreate()
-        if (isAndroidThings) TimeManager().setTimeZone("America/New_York")
         registerActivityLifecycleCallbacks(androidActivityScope.lifecycleManager)
         prepareApplication()
+        try {
+            TimeManager.getInstance()
+                    .setAutoTimeEnabled(true)
+        } catch (e: NoClassDefFoundError) {
+            Timber.e(e, "Unable to set time zone")
+        }
+        registerActivityLifecycleCallbacks(androidActivityScope.lifecycleManager)
+
     }
 
 }
