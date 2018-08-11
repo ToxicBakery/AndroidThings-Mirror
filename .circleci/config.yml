@@ -14,6 +14,10 @@ jobs:
       - run:
           name: Execute Gradle
           command: |
+            echo "zipCodeAndCountryCode=${ZIP_CODE_AND_COUNTRY}" >> local.properties
+            echo "newsFeedUrl=https\://news.google.com/news/rss/" >> local.properties
+            echo "calendarIcalUrl=${ICAL_URL}" >> local.properties
+            echo "openWeatherApiKey=${OPEN_WEATHER_API_KEY}" >> local.properties
             echo "org.gradle.parallel=false" >> gradle.properties
             echo "kotlin.incremental=false" >> gradle.properties
             ./gradlew build check --no-daemon -PdisablePreDex
