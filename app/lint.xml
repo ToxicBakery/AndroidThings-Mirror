@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="InvalidPackage">
+        <ignore regexp="net.fortuna.*" />
+        <ignore regexp="javax.xml.*" />
+    </issue>
+    <issue id="VectorPath">
+        <ignore regexp="weather_*" />
+    </issue>
+    <issue id="UnusedResources">
+        <ignore regexp="weather_*" />
+        <ignore regexp="color*" />
+    </issue>
+    <issue id="TrustAllX509TrustManager">
+        <ignore regexp="org.jsoup.*" />
+    </issue>
+</lint>

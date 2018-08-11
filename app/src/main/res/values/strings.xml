@@ -2,6 +2,8 @@
     <string name="app_name">Android Things Mirror</string>
     <string name="open_weather_base_url">http://api.openweathermap.org/data/2.5/</string>
 
+    <string name="forecast_day_description">Forecast day icon</string>
+    <string name="weather_summary_description">Weather summary icon</string>
     <string name="weather_temperature_unit_imperial">F</string>
     <string name="weather_temperature_unit_metric">C</string>
     <string name="weather_temperature_unit_default">K</string>

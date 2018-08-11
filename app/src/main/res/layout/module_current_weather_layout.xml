@@ -45,6 +45,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/weather_summary_description"
         android:tint="@android:color/white"
         android:tintMode="src_in"
         app:layout_constraintLeft_toLeftOf="parent"

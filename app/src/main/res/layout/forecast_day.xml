@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -16,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Sun"/>
+        tools:text="Sun" />
 
     <ImageView
         android:id="@+id/icon"
@@ -25,12 +24,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/forecast_day_description"
         android:tint="@android:color/white"
         android:tintMode="src_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/day_of_week"
-        app:srcCompat="@drawable/weather_01d"/>
+        app:srcCompat="@drawable/weather_01d" />
 
     <TextView
         android:id="@+id/temperature_high"
@@ -43,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon"
-        tools:text="79°"/>
+        tools:text="79°" />
 
     <TextView
         android:id="@+id/temperature_low"
@@ -56,6 +56,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/temperature_high"
         app:layout_constraintTop_toBottomOf="@+id/icon"
-        tools:text="59°"/>
+        tools:text="59°" />
 
 </android.support.constraint.ConstraintLayout>

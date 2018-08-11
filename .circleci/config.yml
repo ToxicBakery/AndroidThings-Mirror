@@ -1,0 +1,29 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: toxicbakery/alpine-glibc-android:release-1.2.0
+  environment:
+    TERM: dumb
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Execute Gradle
+          command: |
+            echo "org.gradle.parallel=false" >> gradle.properties
+            echo "kotlin.incremental=false" >> gradle.properties
+            ./gradlew build check --no-daemon -PdisablePreDex
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: Sonatype
+          filters:
+            tags:
+              only: /.*/
