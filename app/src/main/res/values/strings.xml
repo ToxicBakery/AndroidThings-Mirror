@@ -1,6 +1,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Android Things Mirror</string>
-    <string name="open_weather_base_url">http://api.openweathermap.org/data/2.5/</string>
+    <string name="open_weather_base_url">https://api.openweathermap.org/data/2.5/</string>
 
     <string name="forecast_day_description">Forecast day icon</string>
     <string name="weather_summary_description">Weather summary icon</string>
